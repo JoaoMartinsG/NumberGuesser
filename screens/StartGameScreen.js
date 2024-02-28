@@ -2,10 +2,10 @@ import { useState } from 'react'
 
 import { TextInput, View, StyleSheet, Alert } from 'react-native'
 
-import PrimaryButton from '../components/PrimaryButton'
-import { Colors } from '../theme/Colors'
+import PrimaryButton from '../components/ui/PrimaryButton'
+import Colors from '../theme/colors'
 
-function StartGameScreen() {
+function StartGameScreen({ onPickNumber }) {
   const [enteredNumber, setEnteredNumber] = useState('')
 
   function numberInputHandler(enteredText) {
@@ -26,7 +26,7 @@ function StartGameScreen() {
       return
     }
 
-    console.log('Valid Number')
+    onPickNumber(chosenNumber)
   }
 
   return (
@@ -60,9 +60,11 @@ const styles = StyleSheet.create({
     marginTop: 100,
     marginHorizontal: 24,
     padding: 16,
-    backgroundColor: Colors.secondary,
+    // backgroundColor: Colors.primary,
+    borderWidth: 4,
+    borderColor: Colors.primary,
     borderRadius: 8,
-    elevation: 8, // android specific component shadow
+    // elevation: 8, // android specific component shadow
 
     // box shadow properties for iOS
     shadowColor: 'black',
